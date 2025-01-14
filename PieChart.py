@@ -49,11 +49,19 @@ processed_data = preprocess_stock_data(raw_data)
 top_10_by_market_cap = sorted(processed_data, key=lambda x: x["시가총액"], reverse=True)[:10]
 top_10_by_volume = sorted(processed_data, key=lambda x: x["거래량"], reverse=True)[:10]
 
-# 사용자 선택
-st.sidebar.header("분석 옵션")
-option = st.sidebar.selectbox("분석할 데이터 선택", ["시가총액", "거래량"])
+# 메인 화면에 버튼 추가
+st.title("주식 데이터 분석")
+st.write("아래 버튼을 클릭하여 원하는 데이터를 확인하세요.")
 
-if option == "시가총액":
+col1, col2 = st.columns(2)  # 버튼을 두 열로 배치
+
+with col1:
+    market_cap_button = st.button("📊 시가총액 데이터 보기")
+with col2:
+    volume_button = st.button("📈 거래량 데이터 보기")
+
+# 시가총액 데이터 표시
+if market_cap_button:
     st.subheader("상위 10위 종목 시가총액 데이터")
     # 시가총액 데이터만 출력
     market_cap_df = pd.DataFrame(top_10_by_market_cap)
@@ -62,7 +70,7 @@ if option == "시가총액":
     st.write(market_cap_df)
 
     # 파이 차트로 시각화
-    st.subheader("상위 10위 시가총액 파이 차트")
+    st.subheader("상위 10위 시가총액 비율")
     labels = market_cap_df["종목"]
     sizes = market_cap_df["시가총액"]
     
@@ -87,7 +95,8 @@ if option == "시가총액":
     ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
     st.pyplot(fig)
 
-elif option == "거래량":
+# 거래량 데이터 표시
+if volume_button:
     st.subheader("상위 10위 종목 거래량 데이터")
     # 거래량 데이터만 출력
     volume_df = pd.DataFrame(top_10_by_volume)
@@ -96,7 +105,7 @@ elif option == "거래량":
     st.write(volume_df)
 
     # 파이 차트로 시각화
-    st.subheader("상위 10위 거래량 파이 차트")
+    st.subheader("상위 10위 거래량 비율")
     labels = volume_df["종목"]
     sizes = volume_df["거래량"]
     
@@ -109,13 +118,13 @@ elif option == "거래량":
 
     # 비율 글씨 스타일 조정
     for autotext in autotexts:
-        autotext.set_fontsize(9)  # 글씨 크기 증가
+        autotext.set_fontsize(9)  # 글씨 크기 조절
         autotext.set_color('black')  # 글씨 색상 변경
         autotext.set_fontweight('bold')  # 글씨 굵기 설정
 
     # 텍스트 스타일 조정
     for text in texts:
-        text.set_fontsize(10)  # 글씨 크기 증가
+        text.set_fontsize(10)  # 글씨 크기 조절
         text.set_fontweight('bold')  # 글씨 굵기 설정
 
     ax.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
