@@ -12,7 +12,7 @@
 
 
 ```
-PROJECT_SeSAC_02
+:file_folder:PROJECT_SeSAC_02
 │
 ├── app.py                                          # 메인 애플리케이션 코드
 ├── __init__.py                                     # 최상위 초기화 파일
