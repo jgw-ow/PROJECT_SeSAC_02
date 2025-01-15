@@ -50,11 +50,11 @@
 │
 ├── 📁datas                                           # 데이터 관련 파일들이 있는 폴더
 │   ├── 📄stopwords.txt                                  # 불용어 목록 파일
-│   ├── wordcloud_output.jpg                           # 워드클라우드 이미지 파일
-│   ├── 새싹로그(gif).gif                              # GIF 파일
-│   ├── 수진님.jpeg                                    # JPEG 이미지 파일
-│   ├── 영재.png                                       # PNG 이미지 파일
-│   └── 정윤님.JPG                                     # JPG 이미지 파일
+│   ├── 🖼️wordcloud_output.jpg                           # 워드클라우드 이미지 파일
+│   ├── 🖼️새싹로그(gif).gif                              # GIF 파일
+│   ├── 🖼️수진님.jpeg                                    # JPEG 이미지 파일
+│   ├── 🖼️영재.png                                       # PNG 이미지 파일
+│   └── 🖼️정윤님.JPG                                     # JPG 이미지 파일
 │
 ├── 📄config.py                                       # 설정 관련 코드
 └── 📄requirements.txt                                # 필요한 패키지 목록 파일
