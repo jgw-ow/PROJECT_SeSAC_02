@@ -1,5 +1,5 @@
 1. 프로젝트 개요
-이 프로젝트는 웹 크롤링, 텍스트 분석, 데이터 시각화의 통합 솔루션으로, 주로 네이버 뉴스 데이터를 크롤링하여 토픽 모델링(LDA)을 수행하고, 다양한 주식 관련 데이터를 시각화하는 애플리케이션입니다. 위 서비스는 사용자가 뉴스 데이터를 분석하고, 실시간 주식 데이터를 직관적으로 시각화하여 쉽게 이해할 수 있도록 도와줍니다. 주요 기능은 다음과 같습니다:
+네이버 뉴스 데이터를 크롤링하여 토픽 모델링(LDA)을 수행하고, 다양한 주식 관련 데이터를 시각화하는 애플리케이션입니다. 위 서비스는 사용자가 뉴스 데이터를 분석하고, 실시간 주식 데이터를 직관적으로 시각화하여 쉽게 이해할 수 있도록 도와줍니다. 주요 기능은 다음과 같습니다:
 1) 네이버 뉴스 크롤링 및 LDA 기반 토픽 모델링: 사용자가 선택한 뉴스 카테고리에서 최신 기사를 크롤링하여 LDA 모델을 통해 주요 토픽을 추출하고, 이를 워드클라우드 형태로 시각화합니다.
 2) 주식 데이터 시각화: 실시간 주식 데이터를 바탕으로 다양한 시각화 차트를 제공합니다. 주식의 현재가, 글로벌 주식 차트, 주요 주가지수, 시가 총액 및 거래량을 직관적인 차트로 표현합니다.
 
@@ -8,46 +8,46 @@
 ```
 PROJECT_SeSAC_02
 │
-├── app.py                       # 메인 애플리케이션 코드
-├── __init__.py                  # 최상위 초기화 파일
+├── app.py                                          # 메인 애플리케이션 코드
+├── __init__.py                                     # 최상위 초기화 파일
 │
-├── modules                      # 모듈 관련 파일들이 있는 폴더
-│   ├── 홈                      # 홈 페이지 관련 모듈
-│   │   ├── display_home_01.py   # 홈 페이지의 첫 번째 디스플레이 관련 코드
-│   │   ├── display_home_02.py   # 홈 페이지의 두 번째 디스플레이 관련 코드
-│   │   ├── __init__.py          # 홈 모듈 초기화 파일
-│   │   └── sub                  # 서브 모듈
-│   │       ├── home_function_sub1.py # 홈 관련 기능 1
-│   │       ├── home_function_sub2.py # 홈 관련 기능 2
-│   │       ├── home_function_sub3.py # 홈 관련 기능 3
-│   │       ├── home_function_sub4.py # 홈 관련 기능 4
-│   │       └── __init__.py      # 서브 모듈 초기화 파일
+├── modules                                         # 모듈 관련 파일들이 있는 폴더
+│   ├── 홈                                          # 홈 페이지 관련 모듈
+│   │   ├── display_home_01.py                      # 홈 페이지의 첫 번째 디스플레이 관련 코드
+│   │   ├── display_home_02.py                      # 홈 페이지의 두 번째 디스플레이 관련 코드
+│   │   ├── __init__.py                             # 홈 모듈 초기화 파일
+│   │   └── sub                                     # 서브 모듈
+│   │       ├── home_function_sub1.py               # 홈 관련 기능 1
+│   │       ├── home_function_sub2.py               # 홈 관련 기능 2
+│   │       ├── home_function_sub3.py               # 홈 관련 기능 3
+│   │       ├── home_function_sub4.py               # 홈 관련 기능 4
+│   │       └── __init__.py                         # 서브 모듈 초기화 파일
 │   │
-│   ├── 크롤링                   # 웹 크롤링 관련 모듈
-│   │   ├── run_crawling.py      # 크롤링 실행 관련 코드
-│   │   ├── __init__.py          # 크롤링 모듈 초기화 파일
-│   │   └── sub                  # 서브 모듈
-│   │       ├── crawling_function_sub1.py  # 크롤링 함수 1
-│   │       ├── crawling_function_sub2.py  # 크롤링 함수 2
-│   │       └── __init__.py      # 서브 모듈 초기화 파일
+│   ├── 크롤링                                       # 웹 크롤링 관련 모듈
+│   │   ├── run_crawling.py                         # 크롤링 실행 관련 코드
+│   │   ├── __init__.py                             # 크롤링 모듈 초기화 파일
+│   │   └── sub                                     # 서브 모듈
+│   │       ├── crawling_function_sub1.py           # 크롤링 함수 1
+│   │       ├── crawling_function_sub2.py           # 크롤링 함수 2
+│   │       └── __init__.py                         # 서브 모듈 초기화 파일
 │   │
-│   └── 시각화                   # 데이터 시각화 관련 모듈
-│       ├── run_visualization.py  # 데이터 시각화 실행 관련 코드
-│       ├── __init__.py          # 시각화 모듈 초기화 파일
-│       └── sub                  # 서브 모듈
-│           ├── visualization_function_sub1.py  # 시각화 함수 1
-│           ├── visualization_function_sub2.py  # 시각화 함수 2
-│           ├── visualization_function_sub3.py  # 시각화 함수 3
-│           ├── visualization_function_sub4.py  # 시각화 함수 4
-│           └── __init__.py      # 서브 모듈 초기화 파일
+│   └── 시각화                                       # 데이터 시각화 관련 모듈
+│       ├── run_visualization.py                    # 데이터 시각화 실행 관련 코드
+│       ├── __init__.py                             # 시각화 모듈 초기화 파일
+│       └── sub                                     # 서브 모듈
+│           ├── visualization_function_sub1.py      # 시각화 함수 1
+│           ├── visualization_function_sub2.py      # 시각화 함수 2
+│           ├── visualization_function_sub3.py      # 시각화 함수 3
+│           ├── visualization_function_sub4.py      # 시각화 함수 4
+│           └── __init__.py                         # 서브 모듈 초기화 파일
 │
-├── datas                        # 데이터 관련 파일들이 있는 폴더
-│   ├── stopwords.txt           # 불용어(stop words) 목록 파일
-│   ├── wordcloud_output.jpg     # 생성된 워드클라우드 이미지 파일
-│   └── 네이버로고.png           # 네이버 로고 이미지 파일
+├── datas                                           # 데이터 관련 파일들이 있는 폴더
+│   ├── stopwords.txt                               # 불용어(stop words) 목록 파일
+│   ├── wordcloud_output.jpg                        # 생성된 워드클라우드 이미지 파일
+│   └── 네이버로고.png                               # 네이버 로고 이미지 파일
 │
-├── config.py                    # 설정 관련 코드
-└── requirements.txt             # 필요한 패키지 목록 파일
+├── config.py                                       # 설정 관련 코드
+└── requirements.txt                                # 필요한 패키지 목록 파일
 ```
 
 
