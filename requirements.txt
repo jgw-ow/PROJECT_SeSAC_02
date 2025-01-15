@@ -1,1 +1,10 @@
-ÿþ
+requests==2.32.3
+beautifulsoup4==4.12.3
+streamlit==1.37.1
+pandas==2.2.2
+seaborn==0.13.2
+plotly==5.24.1
+nltk==3.9.1
+wordcloud==1.9.4
+matplotlib==3.9.2
+Pillow==10.4.0
