@@ -2,14 +2,10 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import streamlit as st
-import matplotlib.pyplot as plt
-import seaborn as sns
-from matplotlib import rcParams
 
-# 한글 폰트 설정 (Windows용)
-def set_korean_font():
-    plt.rcParams['font.family'] = 'Malgun Gothic'  # 윈도우 기본 한글 폰트
-    plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
+# Streamlit 앱 설정
+st.set_page_config(page_title="주식 현재가 비교", layout="wide")
+st.write("")
 
 # 주식 데이터 크롤링 함수
 def extract_stock_data(tag):
@@ -40,9 +36,7 @@ def convert_percentage(value):
     except ValueError:
         return 0.0
 
-# Streamlit 앱
-def app():
-    st.set_page_config(page_title="주식 현재가 비교", layout="wide")
+def visualization_function_sub1():
     st.title("📈 주식 현재가 비교")
 
     # 데이터 가져오기
@@ -51,8 +45,6 @@ def app():
     df['현재가'] = pd.to_numeric(df['현재가'], errors='coerce')
     df['거래량'] = pd.to_numeric(df['거래량'], errors='coerce')
     df['등락률'] = df['등락률'].apply(convert_percentage)  # 등락률을 숫자형으로 변환
-
-    set_korean_font()
 
     # 기본적으로 상위 10개 종목 표시
     top_10_stocks = df.head(10)
@@ -84,37 +76,17 @@ def app():
         # 기본적으로 상위 10개 종목만 그래프에 표시
         top_10_filtered_df = filtered_df.head(10)
 
-        # 막대 그래프 생성
+        # Streamlit 기본 bar_chart로 그래프 생성
         st.subheader("📊 주식 현재가 그래프")
-        fig, ax = plt.subplots(figsize=(12, 6))
         
-        # Seaborn 스타일 적용
-        sns.set_theme(style="whitegrid")
-        bars = ax.bar(top_10_filtered_df['종목명'], top_10_filtered_df['현재가'], color='dodgerblue', alpha=0.8)
-
-        # 막대 위에 값 표시
-        for bar in bars:
-            ax.text(
-                bar.get_x() + bar.get_width() / 2, 
-                bar.get_height() + 1000,  # 값 위치 조정
-                f"{int(bar.get_height()):,}", 
-                ha='center', va='bottom', fontsize=12, fontweight='bold'
-            )
-
-        # 그래프 설정
-        ax.set_xlabel("종목명", fontsize=14)
-        ax.set_ylabel("현재가 (원)", fontsize=14)
-        ax.grid(axis='y', linestyle='--', alpha=0.7)
+        # 선택된 종목의 '종목명'과 '현재가' 컬럼을 시리즈로 변환
+        chart_data = top_10_filtered_df[['종목명', '현재가']].set_index('종목명')
         
-        # 종목명 글자 크기 줄이고, 겹치지 않게 설정
-        plt.xticks(rotation=45, ha='right', fontsize=10)
-        plt.tight_layout()
+        # Streamlit 기본 bar_chart로 막대 그래프 표시
+        st.bar_chart(chart_data['현재가'])
 
-        st.pyplot(fig)
     else:
         st.warning("선택된 주식이 없습니다. 주식을 선택해주세요.")
 
 if __name__ == "__main__":
-    app()
-
-
+    visualization_function_sub1()
