@@ -5,7 +5,7 @@
 
 
 2. 프로젝트 구조
-
+```
 PROJECT_SeSAC_02
 │
 ├── app.py                       # 메인 애플리케이션 코드
@@ -48,7 +48,7 @@ PROJECT_SeSAC_02
 │
 ├── config.py                    # 설정 관련 코드
 └── requirements.txt             # 필요한 패키지 목록 파일
-
+```
 
 
 
